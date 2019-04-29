@@ -1,13 +1,19 @@
-import { takeEvery, call } from "redux-saga/effects";
+import {takeEvery, call} from "redux-saga/effects";
 import * as actions from "../actions";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
-function* apiErrorReceived(action) {
+function * apiErrorReceived(action) {
   yield call(toast.error, `Error Received: ${action.code}`);
 }
 
-function* watchApiError() {
+function * watchApiError() {
   yield takeEvery(actions.API_ERROR, apiErrorReceived);
 }
 
-export default [watchApiError];
+//Drone api error
+function * DroneApiError() {
+  yield takeEvery(actions.API_ERROR, apiErrorReceived);
+}
+
+export default[watchApiError,
+  DroneApiError];

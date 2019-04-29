@@ -1,7 +1,7 @@
 import React from "react";
 import createStore from "./store";
 import {Provider} from "react-redux";
-//import {ToastContainer} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import {MuiThemeProvider, createMuiTheme} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Header from "./components/Header";
