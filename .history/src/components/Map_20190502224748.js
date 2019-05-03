@@ -9,7 +9,7 @@ class Map extends Component {
 
     render() {
         const {viewport} = this.props;
-        //console.log('latitude',viewport.latitude);
+        console.log('latitude',viewport.latitude);
         
         
         function PinIcon(props) {

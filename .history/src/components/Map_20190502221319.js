@@ -2,14 +2,18 @@ import React, {Component} from "react";
 import * as actions from "../store/actions";
 import {connect} from "react-redux";
 import ReactMapGL, {Marker} from 'react-map-gl'
+import {GoogleMap, Marker} from 'google-maps-react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 const TOKEN = "pk.eyJ1IjoiYzE5ODkwNjExIiwiYSI6ImNqdjM1NTk3ejJjYTI0ZGxhb2hoaWt5ZDAifQ.vY1y3SmbZWIvBpdetSk-sw"
 
 class Map extends Component {
 
+  
+    
+
     render() {
         const {viewport} = this.props;
-        //console.log('latitude',viewport.latitude);
+        console.log('latitude',viewport.latitude);
         
         
         function PinIcon(props) {
@@ -22,29 +26,39 @@ class Map extends Component {
           
 
         return (
-        <div>
+          <div>
             <ReactMapGL  {...this.props.viewport} 
                         mapboxApiAccessToken={TOKEN} 
                         zoom={5}
                         onViewportChange={(viewport) => this.setState({viewport})}
                         >
-              <Marker latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-20} offsetTop={-10}>
-                <PinIcon color="primary" fontSize="large"/>
-              </Marker>
+                <Marker latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-20} offsetTop={-10}>
+                  <PinIcon color="primary" fontSize="large"/>
+                </Marker>
           </ReactMapGL>
-        </div>
+
+          {/* google map */}
+
+          <MyMapComponent isMarkerShown />// Map with a Marker
+          <MyMapComponent isMarkerShown={false} />// Just only Map
+
+
+          </div>
         )
     }
 }
 
 const mapStateToProps = state => {
-    const {viewport} = state.drone;
+    const {viewport} = state.drone
+
+    console.log('viewport',viewport);  
+
     return {viewport, error: state.error};
 };
 
 const mapDispatch = dispatch => ({
     onViewportChange: () => dispatch({type: actions.FETCH_DRONE}),
-
+    //onLoad:() => dispatch({type:actions.MAP_VIEW_CHANGE})
 });
 
 export default connect(mapStateToProps,mapDispatch)(Map);

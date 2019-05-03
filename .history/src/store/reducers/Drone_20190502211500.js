@@ -18,10 +18,11 @@ const initialState = {
 export function droneDataRecevied(state = initialState, action) {
     //droneData from workerSaga
     const {droneData} = action;
+    //console.log("drone data reducer",droneData);
 
     //get the latest 15 data for the chart component.
     const full = droneData.slice(droneData.length - 15);
-    
+    console.log('reducer',full);
     //console.log('full', droneData) get the latest value
     const {latitude, longitude, timestamp} = droneData[droneData.length - 1];
 
@@ -56,7 +57,7 @@ export function droneDataRecevied(state = initialState, action) {
                 }
             };
 
-        case "VIEW_UPDATE_UPDATE":
+        case "API_CALL_UPDATE":
             return {
                 ...state,
                 loading: false,
@@ -66,8 +67,6 @@ export function droneDataRecevied(state = initialState, action) {
                 seconds: seconds,
                 fulldata: full,
                 viewport: {
-                    width: 500,
-                    height: 400,
                     latitude: latitude,
                     longitude: longitude,
         

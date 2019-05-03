@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import * as actions from "../store/actions";
 
 import {
     LineChart,
@@ -15,7 +16,7 @@ class Chart extends Component {
 
     render() {
 
-        const {fulldata} = this.props;
+        const {loading, fulldata, temperatureinFahrenheit} = this.props;
 
         let data = fulldata;
 
@@ -51,11 +52,14 @@ class Chart extends Component {
 }
 
 const mapStateToProps = state => {
-    const { fulldata} = state.drone;
+    const {loading, fulldata} = state.drone;
     const {temperatureinFahrenheit} = state.weather;
-    return { fulldata, temperatureinFahrenheit, error: state.error};
+    //console.log(temperatureinFahrenheit);
+    return {loading, fulldata, temperatureinFahrenheit, error: state.error};
 };
 
+const mapDispatch = dispatch => ({
+    //onLoad: () => dispatch({type: actions.FETCH_DRONE})
+  });
 
-
-export default connect(mapStateToProps)(Chart);
+export default connect(mapStateToProps,mapDispatch)(Chart);

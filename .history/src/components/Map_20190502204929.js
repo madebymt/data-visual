@@ -1,16 +1,19 @@
 import React, {Component} from "react";
 import * as actions from "../store/actions";
 import {connect} from "react-redux";
-import ReactMapGL, {Marker} from 'react-map-gl'
+import ReactMapGL, {Marker, NavigationControl} from 'react-map-gl'
 import SvgIcon from '@material-ui/core/SvgIcon';
 const TOKEN = "pk.eyJ1IjoiYzE5ODkwNjExIiwiYSI6ImNqdjM1NTk3ejJjYTI0ZGxhb2hoaWt5ZDAifQ.vY1y3SmbZWIvBpdetSk-sw"
 
 class Map extends Component {
+    // componentDidMount() {
+    //     this
+    //       .props
+    //       .onLoad();
+    // }
 
     render() {
         const {viewport} = this.props;
-        //console.log('latitude',viewport.latitude);
-        
         
         function PinIcon(props) {
             return (
@@ -22,29 +25,35 @@ class Map extends Component {
           
 
         return (
-        <div>
-            <ReactMapGL  {...this.props.viewport} 
+            <ReactMapGL  {...this.props.drone.viewport} 
+                        dragPan={true}
+                        touchZoom={true}
                         mapboxApiAccessToken={TOKEN} 
-                        zoom={5}
-                        onViewportChange={(viewport) => this.setState({viewport})}
+                        latitude={29.761993} 
+                        longitude={-95.366302} 
+                        zoom={7}
                         >
-              <Marker latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-20} offsetTop={-10}>
-                <PinIcon color="primary" fontSize="large"/>
-              </Marker>
+                        <NavigationControl/>
+            <Marker latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-10} offsetTop={-10}>
+            <PinIcon color="primary" fontSize="large"/>
+            </Marker>
           </ReactMapGL>
-        </div>
         )
     }
 }
 
 const mapStateToProps = state => {
-    const {viewport} = state.drone;
+    const {viewport} = state.drone
+    console.log(viewport);
+    //const {latitude, longitude} = state.drone;
+    //const mapData = {...viewport, latitude: 29.7604, longitude: -95.3698};   
+
     return {viewport, error: state.error};
 };
 
 const mapDispatch = dispatch => ({
     onViewportChange: () => dispatch({type: actions.FETCH_DRONE}),
-
+    //onLoad:() => dispatch({type:actions.MAP_VIEW_CHANGE})
 });
 
 export default connect(mapStateToProps,mapDispatch)(Map);

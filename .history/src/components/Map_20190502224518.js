@@ -9,7 +9,7 @@ class Map extends Component {
 
     render() {
         const {viewport} = this.props;
-        //console.log('latitude',viewport.latitude);
+        console.log('latitude',viewport.latitude);
         
         
         function PinIcon(props) {
@@ -26,7 +26,7 @@ class Map extends Component {
             <ReactMapGL  {...this.props.viewport} 
                         mapboxApiAccessToken={TOKEN} 
                         zoom={5}
-                        onViewportChange={(viewport) => this.setState({viewport})}
+                        onViewportChange={(viewport) => dispatch({type: actions.FETCH_DRONE })}
                         >
               <Marker latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-20} offsetTop={-10}>
                 <PinIcon color="primary" fontSize="large"/>
@@ -44,7 +44,6 @@ const mapStateToProps = state => {
 
 const mapDispatch = dispatch => ({
     onViewportChange: () => dispatch({type: actions.FETCH_DRONE}),
-
 });
 
 export default connect(mapStateToProps,mapDispatch)(Map);

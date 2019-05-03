@@ -18,6 +18,7 @@ const initialState = {
 export function droneDataRecevied(state = initialState, action) {
     //droneData from workerSaga
     const {droneData} = action;
+    //console.log("drone data reducer",droneData);
 
     //get the latest 15 data for the chart component.
     const full = droneData.slice(droneData.length - 15);

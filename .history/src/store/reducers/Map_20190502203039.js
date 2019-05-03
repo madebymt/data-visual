@@ -17,6 +17,9 @@ const initialState = {
 };
 
 export function MapReceived(state = initialState, action) {
+    //const {droneData} = action;
+    //console.log('drone', droneData);
+    //const {latitude, longitude} = droneData[droneData.length - 1];
 
     // Handle All action type
     switch (action.type) {

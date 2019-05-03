@@ -53,7 +53,7 @@ class Chart extends Component {
 const mapStateToProps = state => {
     const { fulldata} = state.drone;
     const {temperatureinFahrenheit} = state.weather;
-    return { fulldata, temperatureinFahrenheit, error: state.error};
+    return {loading, fulldata, temperatureinFahrenheit, error: state.error};
 };
 
 

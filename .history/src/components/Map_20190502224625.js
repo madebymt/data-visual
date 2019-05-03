@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import * as actions from "../store/actions";
 import {connect} from "react-redux";
 import ReactMapGL, {Marker} from 'react-map-gl'
+import GoogleMapReact from 'google-maps-react';
 import SvgIcon from '@material-ui/core/SvgIcon';
 const TOKEN = "pk.eyJ1IjoiYzE5ODkwNjExIiwiYSI6ImNqdjM1NTk3ejJjYTI0ZGxhb2hoaWt5ZDAifQ.vY1y3SmbZWIvBpdetSk-sw"
 
@@ -9,7 +10,7 @@ class Map extends Component {
 
     render() {
         const {viewport} = this.props;
-        //console.log('latitude',viewport.latitude);
+        console.log('latitude',viewport.latitude);
         
         
         function PinIcon(props) {
@@ -26,7 +27,7 @@ class Map extends Component {
             <ReactMapGL  {...this.props.viewport} 
                         mapboxApiAccessToken={TOKEN} 
                         zoom={5}
-                        onViewportChange={(viewport) => this.setState({viewport})}
+                        onViewportChange={(viewport)}
                         >
               <Marker latitude={viewport.latitude} longitude={viewport.longitude} offsetLeft={-20} offsetTop={-10}>
                 <PinIcon color="primary" fontSize="large"/>
@@ -44,7 +45,6 @@ const mapStateToProps = state => {
 
 const mapDispatch = dispatch => ({
     onViewportChange: () => dispatch({type: actions.FETCH_DRONE}),
-
 });
 
 export default connect(mapStateToProps,mapDispatch)(Map);

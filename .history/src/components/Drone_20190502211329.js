@@ -83,4 +83,4 @@ const mapStateToProps = state => {
     };
 };  
 
-export default connect(mapStateToProps)(Drone);
+export default connect(mapStateToProps,mapDispatch)(Drone);
