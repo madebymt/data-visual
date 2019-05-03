@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import ReactMapGL, {Marker} from 'react-map-gl'
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-const TOKEN = "pk.eyJ1IjoiYzE5ODkwNjExIiwiYSI6ImNqdjM1NTk3ejJjYTI0ZGxhb2hoaWt5ZDAifQ.vY1y3SmbZWIvBpdetSk-sw"
+const TOKEN = "API KEY HERE"
 
 class Map extends Component {
 
@@ -25,7 +25,7 @@ class Map extends Component {
         return (
         <div>
             <ReactMapGL  {...this.props.viewport} 
-                        mapboxApiAccessToken={TOKEN} 
+                        mapboxApiAccessToken={process.env.REACT_APP_API_KEY} 
                         zoom={5}
                         onViewportChange={(viewport) => this.setState({viewport})}
                         >
