@@ -62,7 +62,7 @@ class Chart extends Component {
 
 const mapStateToProps = state => {
     const {chartData} = state.chart;
-    //console.log(chartData);
+    console.log(chartData);
     return {chartData, error: state.error};
 };
 

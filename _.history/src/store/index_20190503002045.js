@@ -4,10 +4,9 @@ import createSagaMiddleware from "redux-saga";
 import sagas from "./sagas";
 import weatherReducer from "./reducers/Weather";
 import droneReducer from './reducers/Drone';
-import chartReducer from './reducers/Chart';
 
 export default() => {
-  const rootReducer = combineReducers({weather: weatherReducer, drone: droneReducer, chart: chartReducer});
+  const rootReducer = combineReducers({weather: weatherReducer, drone: droneReducer});
 
   const composeEnhancers = composeWithDevTools({});
   const sagaMiddleware = createSagaMiddleware();

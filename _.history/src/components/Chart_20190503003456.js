@@ -17,6 +17,8 @@ class Chart extends Component {
     render() {
         const {chartData} = this.props;
         let data = chartData;
+    
+        let highestMetric = Math.max(...data.map((x) => x.metric));
 
         /* loop through data timestamps and update them to hour, mins and second
            pass the timestap to JS Date object to convert readable time line.
@@ -50,7 +52,10 @@ class Chart extends Component {
                         <YAxis domain={['auto', 'auto']} 
                                scale="linear" 
                                padding={{ top: 10, bottom: 10 }}/>
-                        
+                        <ReferenceLine y={highestMetric} 
+                                       label="Max" 
+                                       stroke="green" 
+                                       strokeDasharray="3 3"/>
                         <Tooltip/>
                     </LineChart>
                 </ResponsiveContainer>
@@ -62,7 +67,7 @@ class Chart extends Component {
 
 const mapStateToProps = state => {
     const {chartData} = state.chart;
-    //console.log(chartData);
+    console.log(chartData);
     return {chartData, error: state.error};
 };
 
