@@ -15,7 +15,7 @@ export function droneDataRecevied(state = initialState, action) {
 
     //get the latest 15 data for the chart component.
     const full = droneData.slice(droneData.length - 15);
-    console.log('reducer',full);
+
     //console.log('full', droneData) get the latest value
     const {latitude, longitude, timestamp} = droneData[droneData.length - 1];
 
@@ -44,15 +44,15 @@ export function droneDataRecevied(state = initialState, action) {
             };
 
         case "API_CALL_UPDATE":
-            return {
-                ...state,
-                loading: false,
-                timestamp: timestamp,
-                latitude: latitude,
-                longitude: longitude,
-                seconds: seconds,
-                fulldata: full
-            };
+        return {
+            ...state,
+            loading: false,
+            timestamp: timestamp,
+            latitude: latitude,
+            longitude: longitude,
+            seconds: seconds,
+            fulldata: full
+        };
         case "API_CALL_FAILURE":
             return {
                 ...state,

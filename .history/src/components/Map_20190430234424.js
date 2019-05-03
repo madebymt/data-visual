@@ -13,7 +13,10 @@ class Map extends Component {
 
     render() {
         const {mapData, viewport, updateViewport} = this.props;
-        
+        function updateViewport(state){
+
+        }
+
         function PinIcon(props) {
             return (
               <SvgIcon {...props}>

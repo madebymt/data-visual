@@ -13,6 +13,7 @@ import {
 } from 'recharts';
 
 class Chart extends Component {
+    
 
     render() {
 
@@ -59,7 +60,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatch = dispatch => ({
-    //onLoad: () => dispatch({type: actions.FETCH_DRONE})
+    onLoad: () => dispatch({type: actions.FETCH_DRONE})
   });
 
 export default connect(mapStateToProps,mapDispatch)(Chart);

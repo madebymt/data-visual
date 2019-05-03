@@ -1,8 +1,8 @@
 import * as actions from "../actions";
-
+// "API_KEY_GOES_HERE";
 
 // Sned Stacy the API Key for this section
-const TOKEN = "API KEY"
+const TOKEN = "pk.eyJ1IjoiYzE5ODkwNjExIiwiYSI6ImNqdjM1NTk3ejJjYTI0ZGxhb2hoaWt5ZDAifQ.vY1y3SmbZWIvBpdetSk-sw"
 
 
 const initialState = {
@@ -17,9 +17,6 @@ const initialState = {
 };
 
 export function MapReceived(state = initialState, action) {
-    //const {droneData} = action;
-    //console.log('drone', droneData);
-    //const {latitude, longitude} = droneData[droneData.length - 1];
 
     // Handle All action type
     switch (action.type) {
@@ -33,16 +30,6 @@ export function MapReceived(state = initialState, action) {
                     token: TOKEN
                 }
             };
-        case "MAP_VIEW_CHANGE":
-        return {
-            ...state,
-            viewport: {
-                width: 500,
-                height: 400,
-                latitude:123 ,
-                longitude:-50.9
-            }
-        };
         case "MAP_CALL_FAILURE":
             return {
                 ...state,
@@ -56,8 +43,7 @@ export function MapReceived(state = initialState, action) {
 
 const handlers = {
     [actions.MAP_CALL_SUCCESS]: MapReceived,
-    [actions.MAP_CALL_FAILURE]: MapReceived,
-    [actions.MAP_VIEW_CHANGE]: MapReceived
+    [actions.MAP_CALL_FAILURE]: MapReceived
 };
 
 export default(state = initialState, action) => {

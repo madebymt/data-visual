@@ -12,8 +12,8 @@ class Map extends Component {
     }
 
     render() {
-        const {mapData, viewport, updateViewport} = this.props;
-        
+        const {mapData} = this.props;
+
         function PinIcon(props) {
             return (
               <SvgIcon {...props}>
@@ -31,7 +31,7 @@ class Map extends Component {
                         latitude={mapData.latitude} 
                         longitude={mapData.longitude} 
                         zoom={7}
-                        onViewportChange={updateViewport}>
+                        >
                         <NavigationControl onViewportChange={updateViewport} />
             <Marker latitude={29.7604} longitude={-95.3698} offsetLeft={-10} offsetTop={-10}>
             <PinIcon color="primary" fontSize="large"/>
@@ -51,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatch = dispatch => ({
     onViewportChange: () => dispatch({type: actions.MAP_CALL_SUCCESS}),
-    onLoad:() => dispatch({type:actions.MAP_VIEW_CHANGE})
+    onLoad:() => dispatch({type:actions.MAP_CALL_SUCCESS})
 });
 
 export default connect(mapStateToProps,mapDispatch)(Map);

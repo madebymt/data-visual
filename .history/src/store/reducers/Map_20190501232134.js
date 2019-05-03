@@ -2,7 +2,7 @@ import * as actions from "../actions";
 
 
 // Sned Stacy the API Key for this section
-const TOKEN = "API KEY"
+const TOKEN = "pk.eyJ1IjoiYzE5ODkwNjExIiwiYSI6ImNqdjM1NTk3ejJjYTI0ZGxhb2hoaWt5ZDAifQ.vY1y3SmbZWIvBpdetSk-sw"
 
 
 const initialState = {
@@ -39,8 +39,8 @@ export function MapReceived(state = initialState, action) {
             viewport: {
                 width: 500,
                 height: 400,
-                latitude:123 ,
-                longitude:-50.9
+                latitude:latitude ,
+                longitude:longitude
             }
         };
         case "MAP_CALL_FAILURE":

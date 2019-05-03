@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import * as actions from "../store/actions";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Chart from './Chart'
 import Map from './Map'
 
 class Drone extends Component {
-    WillReceiveProps() {
+    componentDidMount() {
         this
           .props
           .onLoad();

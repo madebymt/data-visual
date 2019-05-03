@@ -5,15 +5,29 @@ import ReactMapGL, {Marker, NavigationControl} from 'react-map-gl'
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 class Map extends Component {
-    componentDidMount() {
-        this
-          .props
-          .onLoad();
-    }
+    // componentDidMount() {
+    //     this
+    //       .props
+    //       .onLoad();
+    // }
 
+    state = {
+        viewport: {
+          width: 400,
+          height: 400,
+          latitude: 37.7577,
+          longitude: -122.4376,
+          zoom: 8
+        }
+      };
     render() {
         const {mapData, viewport, updateViewport} = this.props;
-        
+        //const {viewport, updateViewport} = this.props;
+
+        function updateViewport(state){
+
+        }
+
         function PinIcon(props) {
             return (
               <SvgIcon {...props}>

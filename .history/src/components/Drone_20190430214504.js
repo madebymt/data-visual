@@ -7,7 +7,7 @@ import Chart from './Chart'
 import Map from './Map'
 
 class Drone extends Component {
-    WillReceiveProps() {
+    componentDidMount() {
         this
           .props
           .onLoad();
@@ -89,7 +89,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatch = dispatch => ({
-    onLoad: () => dispatch({type: actions.FETCH_DRONE})
+    //onLoad: () => dispatch({type: actions.FETCH_DRONE})
   });
   
 

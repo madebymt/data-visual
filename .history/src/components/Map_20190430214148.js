@@ -1,19 +1,14 @@
 import React, {Component} from "react";
 import * as actions from "../store/actions";
 import {connect} from "react-redux";
-import ReactMapGL, {Marker, NavigationControl} from 'react-map-gl'
+import ReactMapGL, {Marker} from 'react-map-gl'
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 class Map extends Component {
-    componentDidMount() {
-        this
-          .props
-          .onLoad();
-    }
 
     render() {
-        const {mapData, viewport, updateViewport} = this.props;
-        
+        const {mapData} = this.props;
+
         function PinIcon(props) {
             return (
               <SvgIcon {...props}>
@@ -31,10 +26,9 @@ class Map extends Component {
                         latitude={mapData.latitude} 
                         longitude={mapData.longitude} 
                         zoom={7}
-                        onViewportChange={updateViewport}>
-                        <NavigationControl onViewportChange={updateViewport} />
+                        onViewportChange={(viewport) => {}}>
             <Marker latitude={29.7604} longitude={-95.3698} offsetLeft={-10} offsetTop={-10}>
-            <PinIcon color="primary" fontSize="large"/>
+            <PinIcon color="#4286f4" fontSize="large"/>
             </Marker>
           </ReactMapGL>
         )
@@ -50,8 +44,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatch = dispatch => ({
-    onViewportChange: () => dispatch({type: actions.MAP_CALL_SUCCESS}),
-    onLoad:() => dispatch({type:actions.MAP_VIEW_CHANGE})
+    //onViewportChange: () => dispatch({type: actions.MAP_CALL_SUCCESS})
 });
 
 export default connect(mapStateToProps,mapDispatch)(Map);

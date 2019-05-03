@@ -13,5 +13,5 @@ export const API_CALL_FAILURE = "API_CALL_FAILURE";
 
 //Map
 export const MAP_CALL_SUCCESS = "MAP_CALL_SUCCESS";
-export const MAP_VIEW_CHANGE = "MAP_VIEW_CHANGE";
+export const MAP_VIEW_CHANGE= "MAP_VIEW_CHANGE";
 export const MAP_CALL_FAILURE = "MAP_CALL_FAILURE";

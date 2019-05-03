@@ -14,6 +14,12 @@ import {
 
 class Chart extends Component {
 
+    WillReceiveProps() {
+        this
+          .props
+          .onLoad();
+    }
+
     render() {
 
         const {loading, fulldata, temperatureinFahrenheit} = this.props;
@@ -38,7 +44,7 @@ class Chart extends Component {
                         bottom: 5,
                         left: 80
                     }}>
-                        <Line type="monotone" dataKey="longitude" stroke="#8884d8"/>
+                        <Line type="monotone" dataKey="{temperatureinFahrenheit}" stroke="#8884d8"/>
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                         <XAxis dataKey="timestamp"/>
                         <YAxis/>
@@ -59,7 +65,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatch = dispatch => ({
-    //onLoad: () => dispatch({type: actions.FETCH_DRONE})
+    onLoad: () => dispatch({type: actions.FETCH_DRONE})
   });
 
 export default connect(mapStateToProps,mapDispatch)(Chart);

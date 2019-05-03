@@ -7,7 +7,7 @@ import Chart from './Chart'
 import Map from './Map'
 
 class Drone extends Component {
-    WillReceiveProps() {
+    componentDidUpdate() {
         this
           .props
           .onLoad();
